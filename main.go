@@ -31,7 +31,7 @@ func main() {
 
 	// Convert the []byte inputData to string for line-by-line parsing.
 	inputStr := string(inputData)
-	fmt.Println("Input data:\n", inputStr) // Print the string of inputData
+	// fmt.Println("Input data:\n", inputStr) // Print the string of inputData
 
 	// Splitting lines: The strings.Split function separates each line of the file into a slice; split based on newlines
 	lines := strings.Split(inputStr, "\n")
