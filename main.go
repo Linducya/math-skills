@@ -11,16 +11,16 @@ import (
 
 func main() {
 	// Check if two command-line arguments are provided (input and output file names)
-	if len(os.Args) != 3 {
-		fmt.Println("Math skills usage: please enter <input file> <output file>")
+	if len(os.Args) != 2 {
+		fmt.Println("Math skills usage: please enter <input file>")
 		os.Exit(1) // Prints exit status 1. The program did not run successfully as the required arguments were not provided.
 	}
 
 	// Get the input & output file names from command-line arguemts
 	inputFile := os.Args[1]
-	outputFile := os.Args[2]
+	// outputFile := os.Args[2]
 	fmt.Println("Input filename: ", inputFile)
-	fmt.Println("Output filename: ", outputFile)
+	// fmt.Println("Output filename: ", outputFile)
 
 	// Read the contents from the input file as bytes: []byte var inputData
 	inputData, err := os.ReadFile(inputFile)
@@ -31,7 +31,7 @@ func main() {
 
 	// Convert the []byte inputData to string for line-by-line parsing.
 	inputStr := string(inputData)
-	fmt.Println("Input content:\n", inputStr) // Print the string of inputData
+	fmt.Println("Input data:\n", inputStr) // Print the string of inputData
 
 	// Splitting lines: The strings.Split function separates each line of the file into a slice; split based on newlines
 	lines := strings.Split(inputStr, "\n")
@@ -112,16 +112,16 @@ func main() {
 	stdDev := math.Sqrt(variance)
 
 	// Prepare the output string with all the results. Note %.2f is two floating points, %v is integer
-	answers := fmt.Sprintf("Average: %.2f\nMedian: %.2f\nVariance: %.2f\nStandard Deviation: %.2f\n",
-		// answers := fmt.Sprintf("Average: %v\nMedian: %v\nVariance: %v\nStandard Deviation: %v\n",
+	answers := fmt.Sprintf("Average: %.0f\nMedian: %.0f\nVariance: %.0f\nStandard Deviation: %.0f\n",
 		mean, median, variance, stdDev)
+	// 	math.Round(mean), math.Round(median), math.Round(variance), math.Round(stdDev))
 
 	// Write the modified contents to the output file, 0644 6=rw Owner, 4=r Group, Others
-	err = os.WriteFile(outputFile, []byte(answers), 0644)
+	/* err = os.WriteFile(outputFile, []byte(answers), 0644)
 	if err != nil {
 		fmt.Println("Error writing output file:", err)
 		os.Exit(1)
-	}
+	} */
 
 	// Print the modified content to the terminal
 	fmt.Println("Calculations:\n", strings.TrimSpace(answers))
