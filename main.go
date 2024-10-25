@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	// Check if two command-line arguments are provided (input and output file names)
+	// Check if command-line arguments are provided (input file name)
 	if len(os.Args) != 2 {
 		fmt.Println("Math skills usage: please enter <input file>")
 		os.Exit(1) // Prints exit status 1. The program did not run successfully as the required arguments were not provided.
